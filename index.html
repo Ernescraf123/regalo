@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Corazón ❤️</title>
+    <link rel="stylesheet" href="style.css?v=11">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="dust-canvas" aria-hidden="true"></canvas>
+    <audio id="bg-music" loop preload="auto">
+        <source src="David Hodges - Lovers In Orbit (español).mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="background-hearts"></div>
+
+    <div id="login-modal" class="modal-overlay">
+        <div class="login-card">
+            <div class="lock-icon">🔒✨</div>
+            <h2>Acceso al Corazón</h2>
+            <p>Para ver lo que siento por ti, ingresa nuestra fecha especial o la clave secreta:</p>
+
+            <input type="password" id="password" placeholder="Contraseña...">
+
+            <div class="button-group">
+                <button onclick="verificarPassword()" class="btn-unlock">Desbloquear</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="album" class="album-container" style="display: none;">
+        <div id="page1" class="book-page">
+            <div class="cover-book">
+                <div class="cover-spine"></div>
+                <div class="cover-content">
+                    <div class="book-decoration deco-top-left"></div>
+                    <div class="book-decoration deco-top-right"></div>
+                    <div class="book-decoration deco-bottom-left"></div>
+                    <div class="book-decoration deco-bottom-right"></div>
+
+                    <h2>Feliz Aniversario Amor Mio</h2>
+                    <p class="sheet-copy">Eres el regalo que Dios me ha podido dar en esta vida.</p>
+
+                    <figure class="cover-photo">
+                        <img src="foto-portada.jpg" alt="Nuestra foto en portada">
+                    </figure>
+
+                    <button class="book-btn cover-btn" onclick="cambiarPagina(2)">Sí, abrir... ➜</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="page2" class="book-page" style="display: none;">
+            <div class="romantic-book">
+                <div class="book-decoration deco-top-left"></div>
+                <div class="book-decoration deco-top-right"></div>
+                <div class="book-decoration deco-bottom-left"></div>
+                <div class="book-decoration deco-bottom-right"></div>
+
+                <div class="book-sheet left-sheet">
+                    <h2>Eres mi lugar favorito</h2>
+                    <p class="sheet-copy">No importa dónde estoy contigo, gracias por darle color y calma a mi vida.</p>
+
+                    <figure class="polaroid-frame">
+                        <img src="foto-segunda pagina.jpg" alt="Nuestra foto">
+                    </figure>
+                    <p class="sheet-caption">contigo, todo florece</p>
+                </div>
+
+                <div class="book-spine"></div>
+
+                <div class="book-sheet right-sheet">
+                    <h2>¿Por qué tú? ❤️</h2>
+                    <ul class="reasons-list">
+                        <li>Porque me haces reír cuando no quiero.</li>
+                        <li>Me apoyas cuando no puedo y me amas tal como soy.</li>
+                        <li>Eres perfecta para mí.</li>
+                        <li>Porque contigo hasta los días simples se vuelven especiales.</li>
+                        <li>Tu forma de mirarme me da paz y me hace sentir en casa.</li>
+                        <li>Siempre encuentras la manera de levantarme cuando caigo.</li>
+                        <li>Admiro tu corazón, tu fuerza y lo genuina que eres.</li>
+                        <li>Me inspiras a ser mejor persona cada día.</li>
+                        <li>Contigo aprendí que el amor también es amistad, paciencia y cuidado.</li>
+                        <li>Tu sonrisa ilumina incluso mis momentos más grises.</li>
+                        <li>Porque te elijo hoy, mañana y todos los días.</li>
+                    </ul>
+                </div>
+
+                <button class="book-btn book-btn-right" onclick="cambiarPagina(1)">⬅ Anterior</button>
+                <button class="book-btn book-btn-left" onclick="cambiarPagina(3)">Siguiente ➜</button>
+            </div>
+        </div>
+
+        <div id="page3" class="book-page" style="display: none;">
+            <div class="romantic-book">
+                <div class="book-decoration deco-top-left"></div>
+                <div class="book-decoration deco-top-right"></div>
+                <div class="book-decoration deco-bottom-left"></div>
+                <div class="book-decoration deco-bottom-right"></div>
+
+                <div class="book-sheet left-sheet">
+                    <h2>Todo contigo ✨</h2>
+                    <p class="sheet-copy">Tú haces que cada día se sienta especial, ligero y bonito.</p>
+                    <figure class="polaroid-frame">
+                        <img src="foto-tercera pagina.jpg" alt="Nosotros">
+                    </figure>
+                    <p class="sheet-caption">te elegiría una y mil veces</p>
+                </div>
+
+                <div class="book-spine"></div>
+
+                <div class="book-sheet right-sheet">
+                    <h2>Promesa</h2>
+                    <ul class="reasons-list">
+                        <li>Cuidarte en días buenos y difíciles.</li>
+                        <li>Escucharte con paciencia y amor.</li>
+                        <li>Seguir construyendo recuerdos juntos.</li>
+                        <li>Elegirte incluso en los días complicados.</li>
+                        <li>Respetarte, valorarte y hablarte siempre con amor.</li>
+                        <li>Sostener tu mano cuando tengas miedo o dudas.</li>
+                        <li>Celebrar tus logros como si fueran míos.</li>
+                        <li>Aprender contigo y crecer juntos paso a paso.</li>
+                        <li>No dejar que la rutina apague lo bonito que tenemos.</li>
+                        <li>Recordarte cada día cuánto te amo.</li>
+                        <li>Ser tu paz, tu apoyo y tu hogar, siempre.</li>
+                    </ul>
+                </div>
+
+                <button class="book-btn book-btn-right" onclick="cambiarPagina(2)">⬅ Anterior</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=8"></script>
+    <script>
+        (function initPolvoLuminosoCanvas() {
+            const canvas = document.getElementById("dust-canvas");
+            if (!canvas) return;
+
+            const ctx = canvas.getContext("2d");
+            const DPR = Math.min(window.devicePixelRatio || 1, 2);
+            let width = 0;
+            let height = 0;
+            let particles = [];
+
+            function createParticle() {
+                return {
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 1.8 + 0.4,
+                    v: Math.random() * 0.22 + 0.05,
+                    drift: (Math.random() - 0.5) * 0.12,
+                    a: Math.random() * 0.6 + 0.2,
+                    tw: Math.random() * Math.PI * 2,
+                    tws: Math.random() * 0.02 + 0.005
+                };
+            }
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+
+                canvas.width = Math.floor(width * DPR);
+                canvas.height = Math.floor(height * DPR);
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+                const count = Math.floor((width * height) / 9000);
+                particles = Array.from({ length: count }, createParticle);
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                for (const p of particles) {
+                    p.y -= p.v;
+                    p.x += p.drift;
+                    p.tw += p.tws;
+
+                    if (p.y < -5) {
+                        p.y = height + 5;
+                        p.x = Math.random() * width;
+                    }
+                    if (p.x < -5) p.x = width + 5;
+                    if (p.x > width + 5) p.x = -5;
+
+                    const alpha = p.a * (0.75 + Math.sin(p.tw) * 0.25);
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+                    ctx.shadowColor = "rgba(255,255,255,0.6)";
+                    ctx.shadowBlur = 6;
+                    ctx.fill();
+                }
+
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener("resize", resize);
+            resize();
+            draw();
+        })();
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
